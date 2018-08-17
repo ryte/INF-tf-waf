@@ -3,10 +3,12 @@
 Terraform module for creating WAF rules and ACLs
 
 NOTE: This module currently only supports ACLs with a single rate based rule,
-which can only contain a single predicate.
+which can only contain 1 or 2 predicates. This will only be changed after
+Terraform 0.12 has been released.
 
 - [ACL](acl/README.md)
-- [rate based rule](rate_based_rule/README.md)
+- [rate based rule with 1 predicate](rate_based_rule/README.md)
+- [rate based rule with 2 predicates](rate_based_rule2/README.md)
 
 This project is [internal open source](https://en.wikipedia.org/wiki/Inner_source)
 and currently maintained by the [INF](https://github.com/orgs/onpage-org/teams/inf).

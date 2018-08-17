@@ -2,7 +2,7 @@
 
 Terraform module for creating rate based rules for a WAF
 
-This rule contains 1 predicate
+This rule contains 2 predicates
 
 This project is [internal open source](https://en.wikipedia.org/wiki/Inner_source)
 and currently maintained by the [INF](https://github.com/orgs/onpage-org/teams/inf).
@@ -10,11 +10,19 @@ and currently maintained by the [INF](https://github.com/orgs/onpage-org/teams/i
 
 ## Module Input Variables
 
-- `predicate`
+- `predicate1`
     -  __description__: String to search for in the URL.
     -  __type__: `string`
 
-- `positional_constraint`
+- `predicate2`
+    -  __description__: String to search for in the URL.
+    -  __type__: `string`
+
+- `positional_constraint1`
+    -  __description__: How to match the predicate (see [docs](https://docs.aws.amazon.com/waf/latest/APIReference/API_ByteMatchTuple.html#WAF-Type-ByteMatchTuple-PositionalConstraint))
+    -  __type__: `string`
+
+- `positional_constraint2`
     -  __description__: How to match the predicate (see [docs](https://docs.aws.amazon.com/waf/latest/APIReference/API_ByteMatchTuple.html#WAF-Type-ByteMatchTuple-PositionalConstraint))
     -  __type__: `string`
 
