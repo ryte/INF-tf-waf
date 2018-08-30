@@ -2,7 +2,7 @@ variable "predicate1" {
   type = "string"
 }
 
-variable "predicate1" {
+variable "predicate2" {
   type = "string"
 }
 
