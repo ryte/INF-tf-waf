@@ -34,13 +34,13 @@ resource "aws_wafregional_rate_based_rule" "url_match_rule" {
   rate_limit  = 2000
 
   predicate {
-    data_id = "${aws_wafregional_byte_match_set1.url_match.id}"
+    data_id = "${aws_wafregional_byte_match_set.url_match1.id}"
     negated = false
     type    = "ByteMatch"
   }
 
   predicate {
-    data_id = "${aws_wafregional_byte_match_set2.url_match.id}"
+    data_id = "${aws_wafregional_byte_match_set.url_match2.id}"
     negated = false
     type    = "ByteMatch"
   }
