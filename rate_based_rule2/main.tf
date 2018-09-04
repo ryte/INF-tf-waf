@@ -1,5 +1,5 @@
 resource "aws_wafregional_byte_match_set" "url_match1" {
-  name = "wafregional_byte_match_set_${var.predicate}_1"
+  name = "wafregional_byte_match_set_${var.predicate1}"
 
   byte_match_tuples {
     text_transformation   = "LOWERCASE"
@@ -13,7 +13,7 @@ resource "aws_wafregional_byte_match_set" "url_match1" {
 }
 
 resource "aws_wafregional_byte_match_set" "url_match2" {
-  name = "wafregional_byte_match_set_${var.predicate}_2"
+  name = "wafregional_byte_match_set_${var.predicate2}"
 
   byte_match_tuples {
     text_transformation   = "LOWERCASE"
@@ -27,7 +27,7 @@ resource "aws_wafregional_byte_match_set" "url_match2" {
 }
 
 resource "aws_wafregional_rate_based_rule" "url_match_rule" {
-  name        = "wafregional_rate_based_match_${var.predicate}"
+  name        = "wafregional_rate_based_match"
   metric_name = "${var.metric_name}"
 
   rate_key    = "IP"
