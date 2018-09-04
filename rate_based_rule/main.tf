@@ -1,9 +1,9 @@
 resource "aws_wafregional_byte_match_set" "url_match" {
-  name = "wafregional_byte_match_set_${var.predicate}"
+  name = "wafregional_byte_match_set"
 
   byte_match_tuples {
     text_transformation   = "LOWERCASE"
-    target_string         = "${var.predicate}"
+    target_string         = "${var.pattern}"
     positional_constraint = "${var.positional_constraint}"
 
     field_to_match {
@@ -13,7 +13,7 @@ resource "aws_wafregional_byte_match_set" "url_match" {
 }
 
 resource "aws_wafregional_rate_based_rule" "url_match_rule" {
-  name        = "wafregional_rate_based_match_${var.predicate}"
+  name        = "wafregional_rate_based_match"
   metric_name = "${var.metric_name}"
 
   rate_key    = "IP"

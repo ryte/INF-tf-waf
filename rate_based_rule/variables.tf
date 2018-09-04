@@ -1,4 +1,4 @@
-variable "predicate" {
+variable "pattern" {
   type = "string"
 }
 

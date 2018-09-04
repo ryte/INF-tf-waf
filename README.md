@@ -3,12 +3,12 @@
 Terraform module for creating WAF rules and ACLs
 
 NOTE: This module currently only supports ACLs with a single rate based rule,
-which can only contain 1 or 2 predicates. This will only be changed after
+which can only contain 1 or 2 patterns. This will only be changed after
 Terraform 0.12 has been released.
 
 - [ACL](acl/README.md)
-- [rate based rule with 1 predicate](rate_based_rule/README.md)
-- [rate based rule with 2 predicates](rate_based_rule2/README.md)
+- [rate based rule with 1 pattern](rate_based_rule/README.md)
+- [rate based rule with 2 patterns](rate_based_rule2/README.md)
 
 This project is [internal open source](https://en.wikipedia.org/wiki/Inner_source)
 and currently maintained by the [INF](https://github.com/orgs/onpage-org/teams/inf).
@@ -22,7 +22,7 @@ will respond with 403 after 2000 requests per 5 minutes from the same IP).
 ```hcl
 module "rate_based_rule" {
   source                = "git@github.com:onpage-org/INF-tf-waf.git?ref=v0.1.0//rate_based_rule"
-  predicate             = "/session"
+  pattern               = "/session"
   positional_constraint = "STARTS_WITH"
   metric_name           = "WAFRBRuleMatchSession"
 }
@@ -45,6 +45,10 @@ None
 
 ## Changelog
 
+0.2.0 - Fix usage of `rate_based_rule2`
+0.1.3 - Bugfix
+0.1.2 - Bugfix
+0.1.1 - Add support for second rule
 0.1.0 - Initial release.
 
 ## License

@@ -1,8 +1,8 @@
-variable "predicate1" {
+variable "pattern1" {
   type = "string"
 }
 
-variable "predicate2" {
+variable "pattern2" {
   type = "string"
 }
 
