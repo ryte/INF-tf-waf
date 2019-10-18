@@ -11,7 +11,7 @@ Terraform 0.12 has been released.
 - [rate based rule with 2 patterns](rate_based_rule2/README.md)
 
 This project is [internal open source](https://en.wikipedia.org/wiki/Inner_source)
-and currently maintained by the [INF](https://github.com/orgs/onpage-org/teams/inf).
+and currently maintained by the [INF](https://github.com/orgs/ryte/teams/inf).
 
 
 ## Usage
@@ -21,14 +21,14 @@ will respond with 403 after 2000 requests per 5 minutes from the same IP).
 
 ```hcl
 module "rate_based_rule" {
-  source                = "git@github.com:onpage-org/INF-tf-waf.git?ref=v0.1.0//rate_based_rule"
+  source                = "git@github.com:ryte/INF-tf-waf.git?ref=v0.1.0//rate_based_rule"
   pattern               = "/session"
   positional_constraint = "STARTS_WITH"
   metric_name           = "WAFRBRuleMatchSession"
 }
 
 module "rate_based_acl" {
-  source      = "git@github.com:onpage-org/INF-tf-waf.git?ref=v0.1.0//acl"
+  source      = "git@github.com:ryte/INF-tf-waf.git?ref=v0.1.0//acl"
   alb_arn     = "${data.terraform_remote_state.setup.alb_arn}"
   rule        = "${module.rate_based_rule.id}"
   metric_name = "WAFRBACLTest"

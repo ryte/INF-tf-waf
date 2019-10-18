@@ -3,7 +3,7 @@
 Terraform module for creating ACLs for a WAF
 
 This project is [internal open source](https://en.wikipedia.org/wiki/Inner_source)
-and currently maintained by the [INF](https://github.com/orgs/onpage-org/teams/inf).
+and currently maintained by the [INF](https://github.com/orgs/ryte/teams/inf).
 
 
 ## Module Input Variables
