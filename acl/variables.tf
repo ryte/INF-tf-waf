@@ -1,11 +1,12 @@
 variable "alb_arn" {
-  type = "string"
+  type = string
 }
 
 variable "rule" {
-  type = "string"
+  type = string
 }
 
 variable "metric_name" {
-  type = "string"
+  type = string
 }
+

@@ -1,12 +1,13 @@
 variable "pattern" {
-  type = "string"
+  type = string
 }
 
 variable "positional_constraint" {
-  type = "string"
+  type    = string
   default = "CONTAINS"
 }
 
 variable "metric_name" {
-  type = "string"
+  type = string
 }
+
