@@ -21,16 +21,16 @@ will respond with 403 after 2000 requests per 5 minutes from the same IP).
 
 ```hcl
 module "rate_based_rule" {
-  source                = "github.com/ryte/INF-tf-waf.git?ref=v0.2.0//rate_based_rule"
+  source                = "github.com/ryte/INF-tf-waf.git//rate_based_rule?ref=v0.3.0"
   pattern               = "/session"
   positional_constraint = "STARTS_WITH"
   metric_name           = "WAFRBRuleMatchSession"
 }
 
 module "rate_based_acl" {
-  source      = "github.com/ryte/INF-tf-waf.git?ref=v0.2.0//acl"
-  alb_arn     = "${data.terraform_remote_state.setup.alb_arn}"
-  rule        = "${module.rate_based_rule.id}"
+  source      = "github.com/ryte/INF-tf-waf.git//acl?ref=v0.3.0"
+  alb_arn     = data.terraform_remote_state.setup.alb_arn
+  rule        = module.rate_based_rule.id
   metric_name = "WAFRBACLTest"
 }
 ```
@@ -45,6 +45,7 @@ None
 
 ## Changelog
 
+- 0.3.0 - Upgrade to terraform 0.12.x
 - 0.2.0 - Fix usage of `rate_based_rule2`
 - 0.1.3 - Bugfix
 - 0.1.2 - Bugfix
