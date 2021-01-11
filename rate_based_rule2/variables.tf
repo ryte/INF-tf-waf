@@ -1,3 +1,9 @@
+variable "tags" {
+  type        = map(string)
+  description = "common tags to add to the ressources"
+  default     = {}
+}
+
 variable "pattern1" {
   type = string
 }
@@ -19,4 +25,3 @@ variable "positional_constraint2" {
 variable "metric_name" {
   type = string
 }
-

@@ -1,5 +1,6 @@
 resource "aws_wafregional_web_acl" "acl" {
   name        = "wafregional_acl_${var.rule}"
+  tags        = var.tags
   metric_name = var.metric_name
 
   default_action {
