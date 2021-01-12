@@ -23,6 +23,7 @@ resource "aws_wafregional_byte_match_set" "url_match" {
 
 resource "aws_wafregional_rate_based_rule" "url_match_rule" {
   name        = "wafregional_rate_based_match"
+  tags        = var.tags
   metric_name = var.metric_name
 
   rate_key   = "IP"
@@ -34,4 +35,3 @@ resource "aws_wafregional_rate_based_rule" "url_match_rule" {
     type    = "ByteMatch"
   }
 }
-
