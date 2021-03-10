@@ -2,35 +2,34 @@
 
 Terraform module for creating WAF rules and ACLs
 
-NOTE: This module currently only supports ACLs with a single rate based rule,
-which can only contain 1 or 2 patterns. This will only be changed after
-Terraform 0.12 has been released.
+NOTE: This module is now updated to **Terraform 0.12** and it supports multiple rate based rules.
 
 - [ACL](acl/README.md)
-- [rate based rule with 1 pattern](rate_based_rule/README.md)
-- [rate based rule with 2 patterns](rate_based_rule2/README.md)
+- [rate based rule](rate_based_rule/README.md)
 
 This project is [internal open source](https://en.wikipedia.org/wiki/Inner_source)
 and currently maintained by the [INF](https://github.com/orgs/ryte/teams/inf).
 
-
 ## Usage
 
-Example ACL to add a rate limit to the route `/session` of a given ALB (The ALB
-will respond with 403 after 2000 requests per 5 minutes from the same IP).
+Example ACL to add multiple rate limit of a ALB based on:
+- HTTP referers header that contains **sample-string-1** 
+- look for URI that matches exactly to **/sample-string-2**
+
+Once anyone or both condition satisfies, the ALB will respond with 403 after 2000 requests per 5 minutes from the same IP is requested.
 
 ```hcl
 local {
   allowed_headers = [
     {
       target_string         = "sample-string-1"
-      positional_constraint = "STARTS_WITH"
+      positional_constraint = "CONTAINS"
       text_transformation   = "NONE"
       type                  = "HEADER"
       data                  = "referer"
     },
     {
-      target_string         = "sample-string-2"
+      target_string         = "/sample-string-2"
       positional_constraint = "EXACTLY"
       text_transformation   = "NONE"
       type                  = "URI"
@@ -58,9 +57,11 @@ None
 
 - [Armin Grodon](https://github.com/x4121)
 - [Markus Schmid](https://github.com/h0raz)
+- [Parmeet Singh](https://github.com/parmeet4dev)
 
 ## Changelog
 
+- 0.3.3 - Merged two separate directories `rate_based_rule` `rate_based_rule2` for different patterns into one, using Dynamic Blocks
 - 0.3.2 - Move tags to local variable
 - 0.3.1 - Add cost allocation tags
 - 0.3.0 - Upgrade to terraform 0.12.x
