@@ -23,22 +23,22 @@ will respond with 403 after 2000 requests per 5 minutes from the same IP).
 local {
   allowed_headers = [
     {
-      target_string = "sample-string-1"
+      target_string         = "sample-string-1"
       positional_constraint = "STARTS_WITH"
-      text_transformation = "NONE"
-      type = "HEADER"
-      data = "referer"
+      text_transformation   = "NONE"
+      type                  = "HEADER"
+      data                  = "referer"
     },
     {
-      target_string = "sample-string-2"
+      target_string         = "sample-string-2"
       positional_constraint = "EXACTLY"
-      text_transformation = "NONE"
-      type = "URI"
+      text_transformation   = "NONE"
+      type                  = "URI"
     }
   ]
 }
 module "rate_based_rule" {
-  source                = "github.com/ryte/INF-tf-waf.git//rate_based_rule?ref=v0.3.2"
+  source          = "github.com/ryte/INF-tf-waf.git//rate_based_rule?ref=v0.3.2"
   allowed_headers = local.allowed_headers
   metric_name     = "WAFRBRuleMatchSession"
 }

@@ -17,8 +17,8 @@ resource "aws_wafregional_byte_match_set" "url_match" {
 }
 
 resource "aws_wafregional_rate_based_rule" "url_match_rule" {
-  name  = "wafregional_rate_based_match"
-  count = length(var.allowed_headers) >= 1 ? 1 : 0
+  name        = "wafregional_rate_based_match"
+  count       = length(var.allowed_headers) >= 1 ? 1 : 0
   tags        = local.tags
   metric_name = var.metric_name
 
