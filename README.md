@@ -37,13 +37,13 @@ local {
   ]
 }
 module "rate_based_rule" {
-  source          = "github.com/ryte/INF-tf-waf.git//rate_based_rule?ref=v0.3.2"
+  source          = "github.com/ryte/INF-tf-waf.git//rate_based_rule?ref=v0.3.3"
   allowed_headers = local.allowed_headers
   metric_name     = "WAFRBRuleMatchSession"
 }
 
 module "rate_based_acl" {
-  source      = "github.com/ryte/INF-tf-waf.git//acl?ref=v0.3.2"
+  source      = "github.com/ryte/INF-tf-waf.git//acl?ref=v0.3.3"
   alb_arn     = data.terraform_remote_state.setup.alb_arn
   rule        = module.rate_based_rule.id
   metric_name = "WAFRBACLTest"
