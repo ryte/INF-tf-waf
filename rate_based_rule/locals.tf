@@ -1,3 +1,10 @@
+
 locals {
-  tags = var.tags
+  tags = {
+    "env"         = "dev"
+    "squad"       = "inf"
+    "product"     = "internal"
+    "type"        = "infra"
+  }
+
 }

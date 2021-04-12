@@ -4,13 +4,9 @@ variable "tags" {
   default     = {}
 }
 
-variable "pattern" {
-  type = string
-}
 
-variable "positional_constraint" {
-  type    = string
-  default = "CONTAINS"
+variable "allowed_headers" {
+  type = list(map(string))
 }
 
 variable "metric_name" {
