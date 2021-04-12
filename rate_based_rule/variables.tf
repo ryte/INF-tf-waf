@@ -6,7 +6,7 @@ variable "tags" {
 
 
 variable "allowed_headers" {
-  type = map(string)
+  type = list(map(string))
 }
 
 variable "metric_name" {
