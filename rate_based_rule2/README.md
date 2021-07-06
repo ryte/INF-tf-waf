@@ -7,38 +7,77 @@ This rule contains a predicate with 2 patterns
 This project is [internal open source](https://en.wikipedia.org/wiki/Inner_source)
 and currently maintained by the [INF](https://github.com/orgs/ryte/teams/inf).
 
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Requirements
 
-## Module Input Variables
+The following requirements are needed by this module:
 
-- `metric_name`
-    -  __description__: Name of the the cloudwatch metric.
-    -  __type__: `string`
+- terraform (>= 0.12)
 
-- `pattern1`
-    -  __description__: String to search for in the URL.
-    -  __type__: `string`
+## Providers
 
-- `pattern2`
-    -  __description__: String to search for in the URL.
-    -  __type__: `string`
+The following providers are used by this module:
 
-- `positional_constraint1`
-    -  __description__: How to match the pattern (see [docs](https://docs.aws.amazon.com/waf/latest/APIReference/API_ByteMatchTuple.html#WAF-Type-ByteMatchTuple-PositionalConstraint))
-    -  __type__: `string`
+- aws
 
-- `positional_constraint2`
-    -  __description__: How to match the pattern (see [docs](https://docs.aws.amazon.com/waf/latest/APIReference/API_ByteMatchTuple.html#WAF-Type-ByteMatchTuple-PositionalConstraint))
-    -  __type__: `string`
+## Required Inputs
 
-- `tags`
-    -  __description__: a map of tags which is added to all supporting ressources
-    -  __type__: `map`
-    -  __default__: {}
+The following input variables are required:
 
-## Usage
-See [Usage](/README.md)
+### metric\_name
+
+Description: Name of the the cloudwatch metric
+
+Type: `string`
+
+### pattern1
+
+Description: String to search for in the URL
+
+Type: `string`
+
+### pattern2
+
+Description: String to search for in the URL
+
+Type: `string`
+
+## Optional Inputs
+
+The following input variables are optional (have default values):
+
+### positional\_constraint1
+
+Description: How to match the pattern (see [docs](https://docs.aws.amazon.com/waf/latest/APIReference/API_ByteMatchTuple.html#WAF-Type-ByteMatchTuple-PositionalConstraint))
+
+Type: `string`
+
+Default: `"CONTAINS"`
+
+### positional\_constraint2
+
+Description: How to match the pattern (see [docs](https://docs.aws.amazon.com/waf/latest/APIReference/API_ByteMatchTuple.html#WAF-Type-ByteMatchTuple-PositionalConstraint))
+
+Type: `string`
+
+Default: `"CONTAINS"`
+
+### tags
+
+Description: common tags to add to the ressources
+
+Type: `map(string)`
+
+Default: `{}`
 
 ## Outputs
-- `id`
-    - __description__: ID of the created rule
-    - __type__: `string`
+
+The following outputs are exported:
+
+### id
+
+Description: ID of the created rule
+
+<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Usage
+See [Usage](/README.md)

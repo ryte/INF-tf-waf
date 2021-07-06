@@ -5,23 +5,28 @@ variable "tags" {
 }
 
 variable "pattern1" {
-  type = string
+  type        = string
+  description = "String to search for in the URL"
 }
 
 variable "pattern2" {
-  type = string
+  type        = string
+  description = "String to search for in the URL"
 }
 
 variable "positional_constraint1" {
-  type    = string
-  default = "CONTAINS"
+  type        = string
+  description = "How to match the pattern (see [docs](https://docs.aws.amazon.com/waf/latest/APIReference/API_ByteMatchTuple.html#WAF-Type-ByteMatchTuple-PositionalConstraint))"
+  default     = "CONTAINS"
 }
 
 variable "positional_constraint2" {
-  type    = string
-  default = "CONTAINS"
+  type        = string
+  description = "How to match the pattern (see [docs](https://docs.aws.amazon.com/waf/latest/APIReference/API_ByteMatchTuple.html#WAF-Type-ByteMatchTuple-PositionalConstraint))"
+  default     = "CONTAINS"
 }
 
 variable "metric_name" {
-  type = string
+  type        = string
+  description = "Name of the the cloudwatch metric"
 }
