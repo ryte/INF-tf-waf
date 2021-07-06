@@ -5,13 +5,16 @@ variable "tags" {
 }
 
 variable "alb_arn" {
-  type = string
+  description = "ARN of the ALB this ACL is applied to"
+  type        = string
 }
 
 variable "rule" {
-  type = string
+  description = "ID of the WAF rule"
+  type        = string
 }
 
 variable "metric_name" {
-  type = string
+  description = "Name of the the cloudwatch metric"
+  type        = string
 }
