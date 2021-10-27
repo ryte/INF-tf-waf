@@ -2,8 +2,6 @@
 
 Terraform module for creating rate based rules for a WAF
 
-This rule contains 1 pattern
-
 This project is [internal open source](https://en.wikipedia.org/wiki/Inner_source)
 and currently maintained by the [INF](https://github.com/orgs/ryte/teams/inf).
 
@@ -26,13 +24,7 @@ The following input variables are required:
 
 ### metric\_name
 
-Description: Name of the the cloudwatch metric
-
-Type: `string`
-
-### pattern
-
-Description: String to search for in the URL
+Description: The name or description for the Amazon CloudWatch metric of this rule.
 
 Type: `string`
 
@@ -40,17 +32,17 @@ Type: `string`
 
 The following input variables are optional (have default values):
 
-### positional\_constraint
+### rule\_predicates
 
-Description: How to match the pattern (see [docs](https://docs.aws.amazon.com/waf/latest/APIReference/API_ByteMatchTuple.html#WAF-Type-ByteMatchTuple-PositionalConstraint))
+Description: List of rules to identify a part of a web request that you want to inspect (see [docs](https://docs.aws.amazon.com/waf/latest/APIReference/API_ByteMatchTuple.html#WAF-Type-ByteMatchTuple-PositionalConstraint)).
 
-Type: `string`
+Type: `list(map(string))`
 
-Default: `"CONTAINS"`
+Default: `[]`
 
 ### tags
 
-Description: common tags to add to the ressources
+Description: common tags to add to the resources
 
 Type: `map(string)`
 
@@ -62,7 +54,7 @@ The following outputs are exported:
 
 ### id
 
-Description: ID of the created rule
+Description: n/a
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Usage

@@ -1,21 +1,16 @@
 variable "tags" {
   type        = map(string)
-  description = "common tags to add to the ressources"
+  description = "common tags to add to the resources"
   default     = {}
 }
 
-variable "pattern" {
-  type        = string
-  description = "String to search for in the URL"
-}
-
-variable "positional_constraint" {
-  type        = string
-  description = "How to match the pattern (see [docs](https://docs.aws.amazon.com/waf/latest/APIReference/API_ByteMatchTuple.html#WAF-Type-ByteMatchTuple-PositionalConstraint))"
-  default     = "CONTAINS"
+variable "rule_predicates" {
+  type        = list(map(string))
+  description = "List of rules to identify a part of a web request that you want to inspect (see [docs](https://docs.aws.amazon.com/waf/latest/APIReference/API_ByteMatchTuple.html#WAF-Type-ByteMatchTuple-PositionalConstraint))."
+  default     = []
 }
 
 variable "metric_name" {
   type        = string
-  description = "Name of the the cloudwatch metric"
+  description = "The name or description for the Amazon CloudWatch metric of this rule."
 }

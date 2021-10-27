@@ -1,4 +1,3 @@
 output "id" {
-  value       = aws_wafregional_rate_based_rule.url_match_rule.id
-  description = "ID of the created rule"
+  value = length(var.rule_predicates) >= 1 ? aws_wafregional_rate_based_rule.match_rule[0].id : ""
 }
