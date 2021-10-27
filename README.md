@@ -13,14 +13,14 @@ and currently maintained by the [INF](https://github.com/orgs/ryte/teams/inf).
 ## Usage
 
 Example ACL to add multiple rate limit of a ALB based on:
-- HTTP referers header that contains **sample-string-1** 
+- HTTP referers header that contains **sample-string-1**
 - look for URI that matches exactly to **/sample-string-2**
 
 Once anyone or both condition satisfies, the ALB will respond with 403 after 2000 requests per 5 minutes from the same IP is requested.
 
 ```hcl
-local {
-  allowed_headers = [
+locals {
+  rule_predicates = [
     {
       target_string         = "sample-string-1"
       positional_constraint = "CONTAINS"
@@ -38,7 +38,7 @@ local {
 }
 module "rate_based_rule" {
   source          = "github.com/ryte/INF-tf-waf.git//rate_based_rule?ref=v0.3.3"
-  allowed_headers = local.allowed_headers
+  rule_predicates = local.rule_predicates
   metric_name     = "WAFRBRuleMatchSession"
 }
 

@@ -1,9 +1,9 @@
-resource "aws_wafregional_byte_match_set" "url_match" {
+resource "aws_wafregional_byte_match_set" "byte_match" {
   name  = "wafregional_byte_match_set"
-  count = length(var.allowed_headers) >= 1 ? 1 : 0
+  count = length(var.rule_predicates) >= 1 ? 1 : 0
 
   dynamic "byte_match_tuples" {
-    for_each = var.allowed_headers
+    for_each = var.rule_predicates
     content {
       field_to_match {
         type = lookup(byte_match_tuples.value, "type", null)
@@ -16,9 +16,9 @@ resource "aws_wafregional_byte_match_set" "url_match" {
   }
 }
 
-resource "aws_wafregional_rate_based_rule" "url_match_rule" {
+resource "aws_wafregional_rate_based_rule" "match_rule" {
   name        = "wafregional_rate_based_match"
-  count       = length(var.allowed_headers) >= 1 ? 1 : 0
+  count       = length(var.rule_predicates) >= 1 ? 1 : 0
   tags        = local.tags
   metric_name = var.metric_name
 
@@ -26,7 +26,7 @@ resource "aws_wafregional_rate_based_rule" "url_match_rule" {
   rate_limit = 2000
 
   predicate {
-    data_id = aws_wafregional_byte_match_set.url_match[count.index].id
+    data_id = aws_wafregional_byte_match_set.byte_match[count.index].id
     negated = false
     type    = "ByteMatch"
   }

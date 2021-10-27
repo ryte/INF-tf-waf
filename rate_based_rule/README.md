@@ -2,32 +2,60 @@
 
 Terraform module for creating rate based rules for a WAF
 
-This rule contains 1 pattern
-
 This project is [internal open source](https://en.wikipedia.org/wiki/Inner_source)
 and currently maintained by the [INF](https://github.com/orgs/ryte/teams/inf).
 
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Requirements
 
-## Module Input Variables
+The following requirements are needed by this module:
 
-- `allowed_header`
-    -  __description__: List of header rules to identify a part of a web request that you want to inspect (see [docs](https://docs.aws.amazon.com/waf/latest/APIReference/API_ByteMatchTuple.html#WAF-Type-ByteMatchTuple-PositionalConstraint))
-    -  __type__: `map`
-    -  __default__: {}
+- terraform (>= 0.12)
 
-- `metric_name`
-    -  __description__: The name or description for the Amazon CloudWatch metric of this rule..
-    -  __type__: `string`
+## Providers
 
-- `tags`
-    -  __description__: a map of tags which is added to all supporting ressources
-    -  __type__: `map`
-    -  __default__: {}
+The following providers are used by this module:
 
-## Usage
-See [Usage](/README.md)
+- aws
+
+## Required Inputs
+
+The following input variables are required:
+
+### metric\_name
+
+Description: The name or description for the Amazon CloudWatch metric of this rule.
+
+Type: `string`
+
+## Optional Inputs
+
+The following input variables are optional (have default values):
+
+### rule\_predicates
+
+Description: List of rules to identify a part of a web request that you want to inspect (see [docs](https://docs.aws.amazon.com/waf/latest/APIReference/API_ByteMatchTuple.html#WAF-Type-ByteMatchTuple-PositionalConstraint)).
+
+Type: `list(map(string))`
+
+Default: `[]`
+
+### tags
+
+Description: common tags to add to the resources
+
+Type: `map(string)`
+
+Default: `{}`
 
 ## Outputs
-- `id`
-    - __description__: ID of the created rule
-    - __type__: `string`
+
+The following outputs are exported:
+
+### id
+
+Description: n/a
+
+<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Usage
+See [Usage](/README.md)
